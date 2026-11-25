@@ -1,0 +1,112 @@
+@import "tailwindcss";
+@import "@fontsource/unbounded/cyrillic-500.css";
+@import "@fontsource/unbounded/cyrillic-ext-500.css";
+@import "@fontsource/unbounded/latin-500.css";
+@import "@fontsource/unbounded/cyrillic-700.css";
+@import "@fontsource/unbounded/cyrillic-ext-700.css";
+@import "@fontsource/unbounded/latin-700.css";
+@import "@fontsource/onest/400.css";
+@import "@fontsource/onest/500.css";
+@import "@fontsource/onest/600.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  Palette — "steppe sky & sun": the two colours of the Kazakh flag used as
+  working colours, on a cool paper background with deep indigo ink.
+*/
+@theme {
+  --font-display: "Unbounded", "Onest", system-ui, sans-serif;
+  --font-sans: "Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --color-ink: #1b1f3b;
+  --color-ink-soft: #4a4f73;
+  --color-muted: #6b7090;
+  --color-paper: #f6f7fb;
+  --color-surface: #ffffff;
+  --color-line: #e3e5ee;
+  --color-sky: #2ba6c9;
+  --color-sky-deep: #1d7f9c;
+  --color-sky-wash: #e4f4f9;
+  --color-sun: #f2b705;
+  --color-sun-wash: #fff6d6;
+  --color-good: #2fb380;
+  --color-good-wash: #e3f6ee;
+  --color-bad: #e5484d;
+  --color-bad-wash: #fde8e8;
+  --color-night: #12142a;
+  --color-night-surface: #1b1e38;
+  --color-night-line: #2c3054;
+}
+
+:root {
+  color-scheme: light;
+}
+.dark {
+  color-scheme: dark;
+  --empty-room: rgba(255, 255, 255, 0.07);
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+body {
+  @apply bg-paper text-ink font-sans antialiased dark:bg-night dark:text-[#e8e9f5];
+  font-feature-settings: "ss01", "tnum";
+}
+
+h1,
+h2,
+h3 {
+  @apply font-display tracking-tight;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-sky);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* reusable bits */
+@utility panel {
+  @apply bg-surface border border-line rounded-2xl dark:bg-night-surface dark:border-night-line;
+}
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+}
+@utility btn-primary {
+  @apply btn bg-ink text-white hover:bg-ink-soft dark:bg-sky dark:text-night dark:hover:bg-[#53bcdb];
+}
+@utility btn-ghost {
+  @apply btn border border-line bg-surface hover:bg-paper dark:bg-night-surface dark:border-night-line dark:hover:bg-night;
+}
+@utility field {
+  @apply w-full rounded-xl border border-line bg-surface px-3 py-2 text-sm dark:bg-night dark:border-night-line;
+}
+@utility muted {
+  @apply text-muted dark:text-[#9da1c4];
+}
+
+input[type="range"] {
+  accent-color: var(--color-sky);
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 8px;
+}
