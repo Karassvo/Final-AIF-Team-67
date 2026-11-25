@@ -1,0 +1,5 @@
+variable_order,forward_checking,solved,nodes,backtracks,seconds
+STATIC,off,0/3,3000,2881,0.202
+STATIC,on,2/3,1165,464,0.111
+MRV,off,0/3,3000,2899,17.861
+MRV,on,3/3,287,0,0.079

@@ -1,0 +1,4 @@
+model,accuracy,precision,recall,f1
+Majority baseline,0.56,0.0,0.0,0.0
+Decision tree (CART),0.8286,0.7901,0.8312,0.8101
+Random forest,0.88,0.859,0.8701,0.8645
